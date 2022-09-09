@@ -1,7 +1,7 @@
 from typing import Union
-
 from fastapi import FastAPI
 import json
+from app.db.mongodb import MongoDBController as mongo_controller
 
 app = FastAPI()
 
@@ -24,3 +24,8 @@ async def search_locations(query: str):
     d = open('data.json')
     json_data = json.load(d)
     return json_data["localsoupkitchens"][query.lower()]
+
+@app.get("/kitchens")
+async def get_all_kitchens():
+
+    return mongo_controller.get_kitchens()
