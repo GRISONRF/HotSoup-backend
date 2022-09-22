@@ -3,6 +3,7 @@ FROM python:3.10-slim
 ENV POETRY_VERSION=1.1.13
 
 RUN pip install poetry==${POETRY_VERSION}
+# RUN RUN curl -sSL https://install.python-poetry.org | python3 -
 
 WORKDIR /code
 

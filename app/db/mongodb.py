@@ -1,7 +1,8 @@
 from pymongo import MongoClient
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 
 # Is this the file where we create the endpoint implementation?
@@ -18,7 +19,7 @@ def init_mongo():
 
     """
     try:
-        client = MongoClient('mongodb://admin:HotSoup4321!@localhost:27017/hot_soup_local_db?authSource=admin')
+        client = MongoClient('mongodb://admin:HotSoup4321!@database:27017/hot_soup_local_db?authSource=admin')
         hot_soup_table = client['hot_soup_table']   #creates a db table called hot_soup_table
         kitchen_collection = hot_soup_table['kitchens'] #references to the table - creating a collection called 'kitchens'
         user_collection = hot_soup_table['user'] #references to the table - creating a collection called 'user'
@@ -27,7 +28,7 @@ def init_mongo():
         logging.error("Client to MongoDB unavailable.  Please check your environment variables.")
     
 #Client for connection to MongoDB
-mongo_client, mongo_table, kitchen_collection = init_mongo()
+mongo_client, mongo_table, kitchen_collection, user_collectior = init_mongo()
 
 
 #Sample Kitchen example /// 
@@ -47,7 +48,6 @@ sample_kitchen = {"Name":"Scott's Kitchen",
   "Wednesday":{"start": 600, "end":1500}
  }
 }
-
 
 
 #inserting above sample_kitchen into the kitchen_collection /// That's what is going to create the tables!!

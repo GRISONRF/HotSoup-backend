@@ -15,7 +15,7 @@ async def get_all_locations():
 
     d = open('data.json')
     json_data = json.load(d)
-    return json_data["localsoupkitchens"]
+    return json_data["localsoupkitchens"]["connecticut"]
 
 
 @app.get("/locations/{query}")
